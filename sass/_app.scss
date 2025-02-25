@@ -1,0 +1,74 @@
+@use 'variable';
+
+.header {
+  height: 80px;
+  width: 380px;
+  background-color: variable.$navy;
+  padding-top: 20px;
+  padding-right: 20px;
+  display: flex;
+  justify-content: flex-end;
+
+  .box__list {
+    gap: 10px;
+    padding: 10px;
+    background-color: variable.$white;
+    width: auto;
+    display: flex;
+
+    @each $className in variable.$classNames {
+      $index_key: index($list: variable.$classNames, $value: $className);
+
+      & > .header__#{$className} {
+        background-color: nth(variable.$buttonColor, $index_key);
+        height: 40px;
+        width: 40px;
+      }
+    }
+  }
+}
+
+.sidebar {
+  height: 250px;
+  width: 150px;
+  background-color: variable.$green;
+}
+
+.main {
+  display: flex;
+
+.main__content {
+  background-color: variable.$red;
+  height: 210px;
+  width: 210px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 40px;
+  padding-left: 40px;
+
+  .outer__box {
+    padding: 5px;
+    background-color: variable.$white;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    width: 140px;
+
+      @each $className in variable.$classNames {
+        $index_key: index($list: variable.$classNames, $value: $className);
+
+        & > .main__#{$className} {
+          background-color: nth(variable.$buttonColor, $index_key);
+          height: 40px;
+          width: 140px;
+        }
+      }
+    }
+  }
+}
+.footer {
+  height: 100px;
+  width: 400px;
+  background-color: variable.$brown;
+}
